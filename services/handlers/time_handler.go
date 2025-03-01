@@ -58,6 +58,10 @@ func (h *NullableTimeHandler) ConvertValue(value interface{}) (interface{}, erro
 		return nil, err
 	}
 
-	t := result.(time.Time)
+	// Safely check the type before asserting
+	t, ok := result.(time.Time)
+	if !ok {
+		return nil, fmt.Errorf("unexpected type: expected time.Time, got %T", result)
+	}
 	return &t, nil
 }

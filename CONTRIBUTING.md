@@ -26,12 +26,11 @@ We appreciate your interest in contributing to gopatchfields. This document prov
 
 ```bash
 # Run all tests
-go test ./...
-
-# Run tests with coverage
-go test -race -coverprofile=coverage.txt -covermode=atomic ./...
+go test -v ./...
 
 # Run linters
+# Requires: go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+# Requires: go install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@latest
 golangci-lint run
 ```
 

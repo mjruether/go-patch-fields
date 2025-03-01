@@ -10,8 +10,8 @@ import (
 
 // PatchFieldService handles property patching operations
 type PatchFieldService struct {
-	ignoreUnmatchedProperties bool
 	typeRegistry              *TypeRegistry
+	ignoreUnmatchedProperties bool
 }
 
 // NewPatchFieldService creates a new PatchFieldService
