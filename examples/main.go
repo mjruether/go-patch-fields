@@ -2,12 +2,10 @@ package main
 
 import (
 	"fmt"
-	"reflect"
 	"time"
 
-	"github.com/mjruether/patchpropertiesgo/patchfields"
-	"github.com/mjruether/patchpropertiesgo/services"
-	"github.com/mjruether/patchpropertiesgo/services/handlers"
+	"github.com/mjruether/go-patch-fields/patchfields"
+	"github.com/mjruether/go-patch-fields/services"
 )
 
 // Example entity we want to patch
@@ -26,15 +24,8 @@ type UserPatch struct {
 }
 
 func main() {
-	// Create service and register type handlers
+	// Create service (handlers are auto-registered)
 	service := services.NewPatchFieldService()
-
-	// Register type handlers
-	registry := service.GetTypeRegistry()
-	registry.RegisterHandler(reflect.TypeOf(""), &handlers.StringHandler{})
-	registry.RegisterHandler(reflect.TypeOf(time.Time{}), &handlers.TimeHandler{})
-	registry.RegisterHandler(reflect.TypeOf(true), &handlers.BoolHandler{})
-	registry.RegisterHandler(reflect.TypeOf(int(0)), &handlers.IntHandler{})
 
 	// Create an example user
 	user := &User{

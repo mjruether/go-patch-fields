@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mjruether/patchpropertiesgo/patchfields"
-	"github.com/mjruether/patchpropertiesgo/services"
+	"github.com/mjruether/go-patch-fields/patchfields"
+	"github.com/mjruether/go-patch-fields/services"
 )
 
 func TestCanPatchInt64(t *testing.T) {

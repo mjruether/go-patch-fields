@@ -5,7 +5,7 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/mjruether/patchpropertiesgo/services/handlers"
+	"github.com/mjruether/go-patch-fields/services/handlers"
 )
 
 // PatchFieldService handles property patching operations

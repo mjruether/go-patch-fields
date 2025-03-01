@@ -3,7 +3,7 @@ package tests
 import (
 	"testing"
 
-	"github.com/mjruether/patchpropertiesgo/patchfields"
+	"github.com/mjruether/go-patch-fields/patchfields"
 )
 
 // TestPatchInt_NonNullProperty_ManuallyChecked_SetValue demonstrates how to use the PatchPropertyInt

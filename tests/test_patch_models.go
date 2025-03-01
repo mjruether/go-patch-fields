@@ -1,6 +1,6 @@
 package tests
 
-import "github.com/mjruether/patchpropertiesgo/patchfields"
+import "github.com/mjruether/go-patch-fields/patchfields"
 
 // IntPatchModel represents a patch model for testing int properties
 type IntPatchModel struct {
