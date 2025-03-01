@@ -8,15 +8,15 @@ import (
 	"github.com/mjruether/patchpropertiesgo/services/handlers"
 )
 
-// PatchPropertyService handles property patching operations
-type PatchPropertyService struct {
+// PatchFieldService handles property patching operations
+type PatchFieldService struct {
 	ignoreUnmatchedProperties bool
 	typeRegistry              *TypeRegistry
 }
 
-// NewPatchPropertyService creates a new PatchPropertyService
-func NewPatchPropertyService() *PatchPropertyService {
-	service := &PatchPropertyService{
+// NewPatchFieldService creates a new PatchFieldService
+func NewPatchFieldService() *PatchFieldService {
+	service := &PatchFieldService{
 		ignoreUnmatchedProperties: false,
 		typeRegistry:              NewTypeRegistry(),
 	}
@@ -57,17 +57,17 @@ func NewPatchPropertyService() *PatchPropertyService {
 }
 
 // GetTypeRegistry returns the service's type registry
-func (s *PatchPropertyService) GetTypeRegistry() *TypeRegistry {
+func (s *PatchFieldService) GetTypeRegistry() *TypeRegistry {
 	return s.typeRegistry
 }
 
 // SetIgnoreUnmatchedProperties configures whether to ignore unmatched properties
-func (s *PatchPropertyService) SetIgnoreUnmatchedProperties(ignore bool) {
+func (s *PatchFieldService) SetIgnoreUnmatchedProperties(ignore bool) {
 	s.ignoreUnmatchedProperties = ignore
 }
 
 // SetValues applies patches from a patch model to an entity
-func (s *PatchPropertyService) SetValues(entity interface{}, patchModel interface{}) *SetValuesResponse {
+func (s *PatchFieldService) SetValues(entity interface{}, patchModel interface{}) *SetValuesResponse {
 	if patchModel == nil {
 		return NewSetValuesResponse(entity)
 	}

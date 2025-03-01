@@ -1,13 +1,13 @@
-package propertytypes
+package patchfields
 
 // PatchPropertyBase defines the non-generic base interface for all patch properties
-type PatchPropertyBase interface {
+type PatchFieldBase interface {
 	GetValue() interface{}
 }
 
 // PatchProperty defines the generic interface for patch property types
-type PatchProperty[T any] interface {
-	PatchPropertyBase
+type PatchField[T any] interface {
+	PatchFieldBase
 	SetValue(value T)
 	GetTypedValue() T
 }

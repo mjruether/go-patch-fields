@@ -33,7 +33,7 @@ type UserPatch struct {
 }
 
 // Create and use the service (handlers auto-registered)
-service := services.NewPatchPropertyService()
+service := services.NewPatchFieldService()
 
 // Optional: Configure unmatched property handling
 service.SetIgnoreUnmatchedProperties(true)
@@ -66,11 +66,11 @@ updatedUser := result.Entity.(*User)
 The library uses a generic interface pattern for type-safe property wrapping:
 
 ```go
-type PatchPropertyBase interface {
+type PatchFieldBase interface {
     GetValue() interface{}
 }
 
-type PatchProperty[T any] interface {
+type PatchField[T any] interface {
     PatchPropertyBase
     SetValue(value T)
     GetTypedValue() T

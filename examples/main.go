@@ -5,7 +5,7 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/mjruether/patchpropertiesgo/propertytypes"
+	"github.com/mjruether/patchpropertiesgo/patchfields"
 	"github.com/mjruether/patchpropertiesgo/services"
 	"github.com/mjruether/patchpropertiesgo/services/handlers"
 )
@@ -20,14 +20,14 @@ type User struct {
 
 // Example patch model
 type UserPatch struct {
-	Name      *propertytypes.PatchPropertyString
-	CreatedAt *propertytypes.PatchPropertyTime
-	Active    *propertytypes.PatchPropertyBool
+	Name      *patchfields.PatchFieldString
+	CreatedAt *patchfields.PatchFieldTime
+	Active    *patchfields.PatchFieldBool
 }
 
 func main() {
 	// Create service and register type handlers
-	service := services.NewPatchPropertyService()
+	service := services.NewPatchFieldService()
 
 	// Register type handlers
 	registry := service.GetTypeRegistry()
@@ -46,8 +46,8 @@ func main() {
 
 	// Create a patch with some changes
 	patch := &UserPatch{
-		Name:   &propertytypes.PatchPropertyString{Value: "Updated Name"},
-		Active: &propertytypes.PatchPropertyBool{Value: false},
+		Name:   &patchfields.PatchFieldString{Value: "Updated Name"},
+		Active: &patchfields.PatchFieldBool{Value: false},
 	}
 
 	fmt.Printf("Before patch:\n%+v\n\n", user)

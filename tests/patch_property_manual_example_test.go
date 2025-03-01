@@ -3,7 +3,7 @@ package tests
 import (
 	"testing"
 
-	"github.com/mjruether/patchpropertiesgo/propertytypes"
+	"github.com/mjruether/patchpropertiesgo/patchfields"
 )
 
 // TestPatchInt_NonNullProperty_ManuallyChecked_SetValue demonstrates how to use the PatchPropertyInt
@@ -14,7 +14,7 @@ func TestPatchInt_NonNullProperty_ManuallyChecked_SetValue(t *testing.T) {
 	entityToUpdate := &TestEntity{} // Zero value for int is 0
 
 	patchModel := &IntPatchModel{
-		SomeInt: &propertytypes.PatchPropertyInt{},
+		SomeInt: &patchfields.PatchFieldInt{},
 	}
 	patchModel.SomeInt.SetValue(newValue)
 
