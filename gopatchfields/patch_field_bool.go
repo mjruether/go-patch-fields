@@ -1,6 +1,6 @@
-package patchfields
+package gopatchfields
 
-// PatchPropertyBool represents a boolean property
+// PatchFieldBool represents a boolean field
 type PatchFieldBool struct {
 	Value bool
 }

@@ -1,24 +1,24 @@
-package services
+package gopatchservices
 
 import (
 	"fmt"
 	"reflect"
 	"time"
 
-	"github.com/mjruether/go-patch-fields/services/handlers"
+	"github.com/mjruether/go-patch-fields/gopatchservices/handlers"
 )
 
-// PatchFieldService handles property patching operations
+// PatchFieldService handles field patching operations
 type PatchFieldService struct {
-	typeRegistry              *TypeRegistry
-	ignoreUnmatchedProperties bool
+	typeRegistry          *TypeRegistry
+	ignoreUnmatchedFields bool
 }
 
 // NewPatchFieldService creates a new PatchFieldService
 func NewPatchFieldService() *PatchFieldService {
 	service := &PatchFieldService{
-		ignoreUnmatchedProperties: false,
-		typeRegistry:              NewTypeRegistry(),
+		ignoreUnmatchedFields: false,
+		typeRegistry:          NewTypeRegistry(),
 	}
 
 	// Register handlers for basic types
@@ -61,9 +61,9 @@ func (s *PatchFieldService) GetTypeRegistry() *TypeRegistry {
 	return s.typeRegistry
 }
 
-// SetIgnoreUnmatchedProperties configures whether to ignore unmatched properties
-func (s *PatchFieldService) SetIgnoreUnmatchedProperties(ignore bool) {
-	s.ignoreUnmatchedProperties = ignore
+// SetIgnoreUnmatchedFields configures whether to ignore unmatched fields
+func (s *PatchFieldService) SetIgnoreUnmatchedFields(ignore bool) {
+	s.ignoreUnmatchedFields = ignore
 }
 
 // SetValues applies patches from a patch model to an entity
@@ -105,12 +105,12 @@ func (s *PatchFieldService) SetValues(entity interface{}, patchModel interface{}
 			continue
 		}
 
-		// Check if field implements PatchProperty interface
+		// Check if field implements PatchField interface
 		if !field.Type().Implements(reflect.TypeOf((*interface{ GetValue() interface{} })(nil)).Elem()) {
 			continue
 		}
 
-		// Get the patch property value using the GetValue method
+		// Get the patch field value using the GetValue method
 		getValue := field.MethodByName("GetValue")
 		if !getValue.IsValid() {
 			continue
@@ -129,8 +129,8 @@ func (s *PatchFieldService) SetValues(entity interface{}, patchModel interface{}
 		// Find matching field in entity
 		entityField := entityValue.FieldByName(fieldType.Name)
 		if !entityField.IsValid() {
-			msg := fmt.Sprintf("%s did not match any properties of the entity to update", fieldType.Name)
-			if s.ignoreUnmatchedProperties {
+			msg := fmt.Sprintf("%s did not match any fields of the entity to update", fieldType.Name)
+			if s.ignoreUnmatchedFields {
 				continue
 			}
 			response.Warnings[fieldType.Name] = msg

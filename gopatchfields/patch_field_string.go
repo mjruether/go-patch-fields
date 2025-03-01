@@ -1,6 +1,6 @@
-package patchfields
+package gopatchfields
 
-// PatchPropertyString represents a string property
+// PatchFieldString represents a string field
 type PatchFieldString struct {
 	Value string
 }

@@ -1,6 +1,6 @@
-package patchfields
+package gopatchfields
 
-// PatchPropertyNullableInt represents a nullable integer property
+// PatchFieldNullableInt represents a nullable integer field
 type PatchFieldNullableInt struct {
 	value *int
 }

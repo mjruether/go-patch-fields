@@ -1,6 +1,6 @@
-package patchfields
+package gopatchfields
 
-// PatchPropertyInt64 represents a 64-bit integer property (equivalent to C# long)
+// PatchFieldInt64 represents a 64-bit integer field (equivalent to C# long)
 type PatchFieldInt64 struct {
 	value int64
 }

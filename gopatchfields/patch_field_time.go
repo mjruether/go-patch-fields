@@ -1,8 +1,8 @@
-package patchfields
+package gopatchfields
 
 import "time"
 
-// PatchPropertyTime represents a time property
+// PatchFieldTime represents a time field
 type PatchFieldTime struct {
 	Value time.Time
 }

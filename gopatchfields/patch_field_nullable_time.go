@@ -1,8 +1,8 @@
-package patchfields
+package gopatchfields
 
 import "time"
 
-// PatchPropertyNullableTime represents a nullable time property (equivalent to C# nullable DateTime)
+// PatchFieldNullableTime represents a nullable time field (equivalent to C# nullable DateTime)
 type PatchFieldNullableTime struct {
 	value *time.Time
 }

@@ -5,10 +5,10 @@
 // updates to struct fields using wrapper types.
 //
 // Key features:
-//   - Type-safe property patching with explicit value wrapping
+//   - Type-safe fields patching with explicit value wrapping
 //   - Support for common Go types (bool, int, string, time.Time, etc.)
 //   - Automatic type handler registration
-//   - Configurable handling of unmatched properties
+//   - Configurable handling of unmatched fields
 //   - Detailed warning and error reporting
 //
 // Example usage:

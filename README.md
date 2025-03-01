@@ -9,16 +9,27 @@ gopatchfields is a Go library that provides a type-safe and structured approach 
 
 ## Features
 
-- 🔒 Type-safe property patching
+- 🔒 Type-safe field patching
 - 🧩 Supports common Go types (bool, int, string, time.Time, etc.)
 - 🚀 Automatic type handler registration
-- 🛠 Configurable handling of unmatched properties
+- 🛠 Configurable handling of unmatched fields
 - 📝 Detailed warning and error reporting
 
 ## Installation
 
+To install the package, use the following command:
+
 ```bash
-go get github.com/mjruether/go-patch-fields
+go get github.com/mjruether/go-patch-fields@v0.1.0
+```
+
+### Import Specific Packages
+
+```go
+import (
+    "github.com/mjruether/go-patch-fields/gopatchfields"
+    "github.com/mjruether/go-patch-fields/gopatchservices"
+)
 ```
 
 ## Quick Start
@@ -30,8 +41,8 @@ import (
     "fmt"
     "time"
 
-    "github.com/mjruether/go-patch-fields/patchfields"
-    "github.com/mjruether/go-patch-fields/services"
+    "github.com/mjruether/go-patch-fields/gopatchfields"
+    "github.com/mjruether/go-patch-fields/gopatchservices"
 )
 
 // Define your entity
@@ -44,14 +55,14 @@ type User struct {
 
 // Define your patch model using wrapper types
 type UserPatch struct {
-    Name      *patchfields.PatchFieldString
-    CreatedAt *patchfields.PatchFieldTime
-    Active    *patchfields.PatchFieldBool
+    Name      *gopatchfields.PatchFieldString
+    CreatedAt *gopatchfields.PatchFieldTime
+    Active    *gopatchfields.PatchFieldBool
 }
 
 func main() {
     // Create service (handlers are auto-registered)
-    service := services.NewPatchFieldService()
+    service := gopatchservices.NewPatchFieldService()
 
     // Create an example user
     user := &User{
@@ -63,8 +74,8 @@ func main() {
 
     // Create a patch with some changes
     patch := &UserPatch{
-        Name:   &patchfields.PatchFieldString{Value: "Updated Name"},
-        Active: &patchfields.PatchFieldBool{Value: false},
+        Name:   &gopatchfields.PatchFieldString{Value: "Updated Name"},
+        Active: &gopatchfields.PatchFieldBool{Value: false},
     }
 
     // Apply the patch
@@ -99,11 +110,11 @@ The library uses wrapper types (`PatchFieldString`, `PatchFieldInt`, etc.) to pr
 
 ## Configuration
 
-### Ignoring Unmatched Properties
+### Ignoring Unmatched Fields
 
 ```go
-service := services.NewPatchFieldService()
-service.SetIgnoreUnmatchedProperties(true)
+service := gopatchservices.NewPatchFieldService()
+service.SetIgnoreUnmatchedFields(true)
 ```
 
 ## Contributing

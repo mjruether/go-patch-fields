@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/mjruether/go-patch-fields/patchfields"
-	"github.com/mjruether/go-patch-fields/services"
+	"github.com/mjruether/go-patch-fields/gopatchfields"
+	"github.com/mjruether/go-patch-fields/gopatchservices"
 )
 
 // Example entity we want to patch
@@ -18,14 +18,14 @@ type User struct {
 
 // Example patch model
 type UserPatch struct {
-	Name      *patchfields.PatchFieldString
-	CreatedAt *patchfields.PatchFieldTime
-	Active    *patchfields.PatchFieldBool
+	Name      *gopatchfields.PatchFieldString
+	CreatedAt *gopatchfields.PatchFieldTime
+	Active    *gopatchfields.PatchFieldBool
 }
 
 func main() {
 	// Create service (handlers are auto-registered)
-	service := services.NewPatchFieldService()
+	service := gopatchservices.NewPatchFieldService()
 
 	// Create an example user
 	user := &User{
@@ -37,8 +37,9 @@ func main() {
 
 	// Create a patch with some changes
 	patch := &UserPatch{
-		Name:   &patchfields.PatchFieldString{Value: "Updated Name"},
-		Active: &patchfields.PatchFieldBool{Value: false},
+		Name:      &gopatchfields.PatchFieldString{Value: "Updated Name"},
+		Active:    &gopatchfields.PatchFieldBool{Value: false},
+		CreatedAt: nil, // This field will not be updated
 	}
 
 	fmt.Printf("Before patch:\n%+v\n\n", user)

@@ -1,44 +1,44 @@
 package tests
 
-import "github.com/mjruether/go-patch-fields/patchfields"
+import "github.com/mjruether/go-patch-fields/gopatchfields"
 
-// IntPatchModel represents a patch model for testing int properties
+// IntPatchModel represents a patch model for testing int fields
 type IntPatchModel struct {
-	SomeInt         *patchfields.PatchFieldInt
-	SomeNullableInt *patchfields.PatchFieldInt
-	MisTypedInt     *patchfields.PatchFieldString
+	SomeInt         *gopatchfields.PatchFieldInt
+	SomeNullableInt *gopatchfields.PatchFieldInt
+	MisTypedInt     *gopatchfields.PatchFieldString
 }
 
-// Int64PatchModel represents a patch model for testing int64 properties
+// Int64PatchModel represents a patch model for testing int64 fields
 type Int64PatchModel struct {
-	SomeInt64 *patchfields.PatchFieldInt64
+	SomeInt64 *gopatchfields.PatchFieldInt64
 }
 
-// StringPatchModel represents a patch model for testing string properties
+// StringPatchModel represents a patch model for testing string fields
 type StringPatchModel struct {
-	SomeString         *patchfields.PatchFieldString
-	SomeNullableString *patchfields.PatchFieldString
+	SomeString         *gopatchfields.PatchFieldString
+	SomeNullableString *gopatchfields.PatchFieldString
 }
 
-// BoolPatchModel represents a patch model for testing bool properties
+// BoolPatchModel represents a patch model for testing bool fields
 type BoolPatchModel struct {
-	SomeBool         *patchfields.PatchFieldBool
-	SomeNullableBool *patchfields.PatchFieldBool
+	SomeBool         *gopatchfields.PatchFieldBool
+	SomeNullableBool *gopatchfields.PatchFieldBool
 }
 
-// Float64PatchModel represents a patch model for testing float64 properties
+// Float64PatchModel represents a patch model for testing float64 fields
 type Float64PatchModel struct {
-	SomeFloat64         *patchfields.PatchFieldFloat64
-	SomeNullableFloat64 *patchfields.PatchFieldFloat64
+	SomeFloat64         *gopatchfields.PatchFieldFloat64
+	SomeNullableFloat64 *gopatchfields.PatchFieldFloat64
 }
 
-// TimePatchModel represents a patch model for testing time properties
+// TimePatchModel represents a patch model for testing time fields
 type TimePatchModel struct {
-	SomeTime         *patchfields.PatchFieldTime
-	SomeNullableTime *patchfields.PatchFieldTime
+	SomeTime         *gopatchfields.PatchFieldTime
+	SomeNullableTime *gopatchfields.PatchFieldTime
 }
 
-// MisNamedPatchModel represents a patch model with mismatched property names
+// MisNamedPatchModel represents a patch model with mismatched field names
 type MisNamedPatchModel struct {
-	MisNamedInt *patchfields.PatchFieldInt
+	MisNamedInt *gopatchfields.PatchFieldInt
 }

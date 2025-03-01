@@ -1,6 +1,6 @@
-package patchfields
+package gopatchfields
 
-// PatchPropertyInt represents an integer property and implements PatchProperty[int]
+// PatchFieldInt represents an integer fields and implements PatchField[int]
 type PatchFieldInt struct {
 	value int
 }

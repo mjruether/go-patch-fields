@@ -4,20 +4,20 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mjruether/go-patch-fields/patchfields"
-	"github.com/mjruether/go-patch-fields/services"
+	"github.com/mjruether/go-patch-fields/gopatchfields"
+	"github.com/mjruether/go-patch-fields/gopatchservices"
 )
 
 func TestCanPatchInt64(t *testing.T) {
-	service := services.NewPatchFieldService()
+	service := gopatchservices.NewPatchFieldService()
 	newValue := int64(100)
 	entityToUpdate := &TestEntity{}
 
-	patchProperty := &patchfields.PatchFieldInt64{}
-	patchProperty.SetValue(newValue)
+	patchFields := &gopatchfields.PatchFieldInt64{}
+	patchFields.SetValue(newValue)
 
 	patchModel := &Int64PatchModel{
-		SomeInt64: patchProperty,
+		SomeInt64: patchFields,
 	}
 
 	if got := entityToUpdate.SomeInt64; got == newValue {
@@ -32,15 +32,15 @@ func TestCanPatchInt64(t *testing.T) {
 }
 
 func TestCanPatchString(t *testing.T) {
-	service := services.NewPatchFieldService()
+	service := gopatchservices.NewPatchFieldService()
 	newValue := "test string"
 	entityToUpdate := &TestEntity{}
 
-	patchProperty := &patchfields.PatchFieldString{}
-	patchProperty.SetValue(newValue)
+	patchField := &gopatchfields.PatchFieldString{}
+	patchField.SetValue(newValue)
 
 	patchModel := &StringPatchModel{
-		SomeString: patchProperty,
+		SomeString: patchField,
 	}
 
 	if got := entityToUpdate.SomeString; got == newValue {
@@ -55,15 +55,15 @@ func TestCanPatchString(t *testing.T) {
 }
 
 func TestCanPatchNullableString(t *testing.T) {
-	service := services.NewPatchFieldService()
+	service := gopatchservices.NewPatchFieldService()
 	newValue := "test string"
 	entityToUpdate := &TestEntity{}
 
-	patchProperty := &patchfields.PatchFieldString{}
-	patchProperty.SetValue(newValue)
+	patchField := &gopatchfields.PatchFieldString{}
+	patchField.SetValue(newValue)
 
 	patchModel := &StringPatchModel{
-		SomeNullableString: patchProperty,
+		SomeNullableString: patchField,
 	}
 
 	if entityToUpdate.SomeNullableString != nil {
@@ -80,15 +80,15 @@ func TestCanPatchNullableString(t *testing.T) {
 }
 
 func TestCanPatchBool(t *testing.T) {
-	service := services.NewPatchFieldService()
+	service := gopatchservices.NewPatchFieldService()
 	newValue := true
 	entityToUpdate := &TestEntity{}
 
-	patchProperty := &patchfields.PatchFieldBool{}
-	patchProperty.SetValue(newValue)
+	patchField := &gopatchfields.PatchFieldBool{}
+	patchField.SetValue(newValue)
 
 	patchModel := &BoolPatchModel{
-		SomeBool: patchProperty,
+		SomeBool: patchField,
 	}
 
 	if got := entityToUpdate.SomeBool; got == newValue {
@@ -103,15 +103,15 @@ func TestCanPatchBool(t *testing.T) {
 }
 
 func TestCanPatchNullableBool(t *testing.T) {
-	service := services.NewPatchFieldService()
+	service := gopatchservices.NewPatchFieldService()
 	newValue := true
 	entityToUpdate := &TestEntity{}
 
-	patchProperty := &patchfields.PatchFieldBool{}
-	patchProperty.SetValue(newValue)
+	patchField := &gopatchfields.PatchFieldBool{}
+	patchField.SetValue(newValue)
 
 	patchModel := &BoolPatchModel{
-		SomeNullableBool: patchProperty,
+		SomeNullableBool: patchField,
 	}
 
 	if entityToUpdate.SomeNullableBool != nil {
@@ -128,15 +128,15 @@ func TestCanPatchNullableBool(t *testing.T) {
 }
 
 func TestCanPatchFloat64(t *testing.T) {
-	service := services.NewPatchFieldService()
+	service := gopatchservices.NewPatchFieldService()
 	newValue := 123.456
 	entityToUpdate := &TestEntity{}
 
-	patchProperty := &patchfields.PatchFieldFloat64{}
-	patchProperty.SetValue(newValue)
+	patchField := &gopatchfields.PatchFieldFloat64{}
+	patchField.SetValue(newValue)
 
 	patchModel := &Float64PatchModel{
-		SomeFloat64: patchProperty,
+		SomeFloat64: patchField,
 	}
 
 	if got := entityToUpdate.SomeFloat64; got == newValue {
@@ -151,15 +151,15 @@ func TestCanPatchFloat64(t *testing.T) {
 }
 
 func TestCanPatchNullableFloat64(t *testing.T) {
-	service := services.NewPatchFieldService()
+	service := gopatchservices.NewPatchFieldService()
 	newValue := 123.456
 	entityToUpdate := &TestEntity{}
 
-	patchProperty := &patchfields.PatchFieldFloat64{}
-	patchProperty.SetValue(newValue)
+	patchField := &gopatchfields.PatchFieldFloat64{}
+	patchField.SetValue(newValue)
 
 	patchModel := &Float64PatchModel{
-		SomeNullableFloat64: patchProperty,
+		SomeNullableFloat64: patchField,
 	}
 
 	if entityToUpdate.SomeNullableFloat64 != nil {
@@ -176,15 +176,15 @@ func TestCanPatchNullableFloat64(t *testing.T) {
 }
 
 func TestCanPatchTime(t *testing.T) {
-	service := services.NewPatchFieldService()
+	service := gopatchservices.NewPatchFieldService()
 	newValue := time.Date(2025, 1, 1, 0, 0, 0, 0, time.UTC)
 	entityToUpdate := &TestEntity{}
 
-	patchProperty := &patchfields.PatchFieldTime{}
-	patchProperty.SetValue(newValue)
+	patchField := &gopatchfields.PatchFieldTime{}
+	patchField.SetValue(newValue)
 
 	patchModel := &TimePatchModel{
-		SomeTime: patchProperty,
+		SomeTime: patchField,
 	}
 
 	if got := entityToUpdate.SomeTime; got.Equal(newValue) {
@@ -199,15 +199,15 @@ func TestCanPatchTime(t *testing.T) {
 }
 
 func TestCanPatchNullableTime(t *testing.T) {
-	service := services.NewPatchFieldService()
+	service := gopatchservices.NewPatchFieldService()
 	newValue := time.Date(2025, 1, 1, 0, 0, 0, 0, time.UTC)
 	entityToUpdate := &TestEntity{}
 
-	patchProperty := &patchfields.PatchFieldTime{}
-	patchProperty.SetValue(newValue)
+	patchField := &gopatchfields.PatchFieldTime{}
+	patchField.SetValue(newValue)
 
 	patchModel := &TimePatchModel{
-		SomeNullableTime: patchProperty,
+		SomeNullableTime: patchField,
 	}
 
 	if entityToUpdate.SomeNullableTime != nil {
@@ -224,17 +224,17 @@ func TestCanPatchNullableTime(t *testing.T) {
 }
 
 func TestCanPatchInt(t *testing.T) {
-	service := services.NewPatchFieldService()
+	service := gopatchservices.NewPatchFieldService()
 
 	newValue := 1
 
 	entityToUpdate := &TestEntity{}
 
-	patchProperty := &patchfields.PatchFieldInt{}
-	patchProperty.SetValue(newValue)
+	patchField := &gopatchfields.PatchFieldInt{}
+	patchField.SetValue(newValue)
 
 	patchModel := &IntPatchModel{
-		SomeInt: patchProperty,
+		SomeInt: patchField,
 	}
 
 	if got := entityToUpdate.SomeInt; got == newValue {
@@ -249,17 +249,17 @@ func TestCanPatchInt(t *testing.T) {
 }
 
 func TestCanPatchNullableInt(t *testing.T) {
-	service := services.NewPatchFieldService()
+	service := gopatchservices.NewPatchFieldService()
 
 	newValue := 1
 
 	entityToUpdate := &TestEntity{}
 
-	patchProperty := &patchfields.PatchFieldInt{}
-	patchProperty.SetValue(newValue)
+	patchField := &gopatchfields.PatchFieldInt{}
+	patchField.SetValue(newValue)
 
 	patchModel := &IntPatchModel{
-		SomeNullableInt: patchProperty,
+		SomeNullableInt: patchField,
 	}
 
 	var currentValue int
@@ -280,7 +280,7 @@ func TestCanPatchNullableInt(t *testing.T) {
 }
 
 func TestCanPatchNullableInt_ToNullValue(t *testing.T) {
-	service := services.NewPatchFieldService()
+	service := gopatchservices.NewPatchFieldService()
 
 	initialValue := 0
 	entityToUpdate := &TestEntity{
@@ -288,7 +288,7 @@ func TestCanPatchNullableInt_ToNullValue(t *testing.T) {
 	}
 
 	patchModel := &IntPatchModel{
-		SomeNullableInt: &patchfields.PatchFieldInt{},
+		SomeNullableInt: &gopatchfields.PatchFieldInt{},
 	}
 	patchModel.SomeNullableInt = nil // Setting to nil to indicate null value
 
@@ -304,17 +304,17 @@ func TestCanPatchNullableInt_ToNullValue(t *testing.T) {
 }
 
 func TestCannotPatchMisMatchedName(t *testing.T) {
-	service := services.NewPatchFieldService()
+	service := gopatchservices.NewPatchFieldService()
 
 	newValue := 1
 
 	entityToUpdate := &TestEntity{}
 
-	patchProperty := &patchfields.PatchFieldInt{}
-	patchProperty.SetValue(newValue)
+	patchField := &gopatchfields.PatchFieldInt{}
+	patchField.SetValue(newValue)
 
 	patchModel := &MisNamedPatchModel{
-		MisNamedInt: patchProperty,
+		MisNamedInt: patchField,
 	}
 
 	response := service.SetValues(entityToUpdate, patchModel)
@@ -329,7 +329,7 @@ func TestCannotPatchMisMatchedName(t *testing.T) {
 }
 
 func TestCanPatchNullableString_ToNullValue(t *testing.T) {
-	service := services.NewPatchFieldService()
+	service := gopatchservices.NewPatchFieldService()
 
 	initialValue := "test"
 	entityToUpdate := &TestEntity{
@@ -337,7 +337,7 @@ func TestCanPatchNullableString_ToNullValue(t *testing.T) {
 	}
 
 	patchModel := &StringPatchModel{
-		SomeNullableString: &patchfields.PatchFieldString{},
+		SomeNullableString: &gopatchfields.PatchFieldString{},
 	}
 	patchModel.SomeNullableString = nil // Setting to nil to indicate null value
 
@@ -353,7 +353,7 @@ func TestCanPatchNullableString_ToNullValue(t *testing.T) {
 }
 
 func TestCanPatchNullableBool_ToNullValue(t *testing.T) {
-	service := services.NewPatchFieldService()
+	service := gopatchservices.NewPatchFieldService()
 
 	initialValue := true
 	entityToUpdate := &TestEntity{
@@ -361,7 +361,7 @@ func TestCanPatchNullableBool_ToNullValue(t *testing.T) {
 	}
 
 	patchModel := &BoolPatchModel{
-		SomeNullableBool: &patchfields.PatchFieldBool{},
+		SomeNullableBool: &gopatchfields.PatchFieldBool{},
 	}
 	patchModel.SomeNullableBool = nil // Setting to nil to indicate null value
 
@@ -377,7 +377,7 @@ func TestCanPatchNullableBool_ToNullValue(t *testing.T) {
 }
 
 func TestCanPatchNullableFloat64_ToNullValue(t *testing.T) {
-	service := services.NewPatchFieldService()
+	service := gopatchservices.NewPatchFieldService()
 
 	initialValue := 123.456
 	entityToUpdate := &TestEntity{
@@ -385,7 +385,7 @@ func TestCanPatchNullableFloat64_ToNullValue(t *testing.T) {
 	}
 
 	patchModel := &Float64PatchModel{
-		SomeNullableFloat64: &patchfields.PatchFieldFloat64{},
+		SomeNullableFloat64: &gopatchfields.PatchFieldFloat64{},
 	}
 	patchModel.SomeNullableFloat64 = nil // Setting to nil to indicate null value
 
@@ -401,7 +401,7 @@ func TestCanPatchNullableFloat64_ToNullValue(t *testing.T) {
 }
 
 func TestCanPatchNullableTime_ToNullValue(t *testing.T) {
-	service := services.NewPatchFieldService()
+	service := gopatchservices.NewPatchFieldService()
 
 	initialValue := time.Date(2025, 1, 1, 0, 0, 0, 0, time.UTC)
 	entityToUpdate := &TestEntity{
@@ -409,7 +409,7 @@ func TestCanPatchNullableTime_ToNullValue(t *testing.T) {
 	}
 
 	patchModel := &TimePatchModel{
-		SomeNullableTime: &patchfields.PatchFieldTime{},
+		SomeNullableTime: &gopatchfields.PatchFieldTime{},
 	}
 	patchModel.SomeNullableTime = nil // Setting to nil to indicate null value
 
@@ -425,17 +425,17 @@ func TestCanPatchNullableTime_ToNullValue(t *testing.T) {
 }
 
 func TestCannotPatchMisMatchedType(t *testing.T) {
-	service := services.NewPatchFieldService()
+	service := gopatchservices.NewPatchFieldService()
 
 	newValue := "asdf"
 
 	entityToUpdate := &TestEntity{}
 
-	patchProperty := &patchfields.PatchFieldString{}
-	patchProperty.SetValue(newValue)
+	patchField := &gopatchfields.PatchFieldString{}
+	patchField.SetValue(newValue)
 
 	patchModel := &IntPatchModel{
-		MisTypedInt: patchProperty,
+		MisTypedInt: patchField,
 	}
 
 	response := service.SetValues(entityToUpdate, patchModel)

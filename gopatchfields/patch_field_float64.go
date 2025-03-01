@@ -1,6 +1,6 @@
-package patchfields
+package gopatchfields
 
-// PatchPropertyFloat64 represents a 64-bit floating-point property (equivalent to C# double)
+// PatchFieldFloat64 represents a 64-bit floating-point field (equivalent to C# double)
 type PatchFieldFloat64 struct {
 	value float64
 }

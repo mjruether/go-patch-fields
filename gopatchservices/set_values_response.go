@@ -1,4 +1,4 @@
-package services
+package gopatchservices
 
 // SetValuesResponse represents the result of a patch operation
 type SetValuesResponse struct {
