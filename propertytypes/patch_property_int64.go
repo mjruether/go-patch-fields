@@ -5,7 +5,7 @@ type PatchPropertyInt64 struct {
 	value int64
 }
 
-func (p *PatchPropertyInt64) GetValue() int64 {
+func (p *PatchPropertyInt64) GetValue() interface{} {
 	return p.value
 }
 

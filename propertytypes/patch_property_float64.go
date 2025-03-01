@@ -5,7 +5,7 @@ type PatchPropertyFloat64 struct {
 	value float64
 }
 
-func (p *PatchPropertyFloat64) GetValue() float64 {
+func (p *PatchPropertyFloat64) GetValue() interface{} {
 	return p.value
 }
 
