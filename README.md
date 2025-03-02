@@ -20,7 +20,7 @@ gopatchfields is a Go library that provides a type-safe and structured approach 
 To install the package, use the following command:
 
 ```bash
-go get github.com/mjruether/go-patch-fields@v0.1.2
+go get github.com/mjruether/go-patch-fields@latest
 ```
 
 ### Import Specific Packages
