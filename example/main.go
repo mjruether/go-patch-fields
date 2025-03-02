@@ -10,10 +10,10 @@ import (
 
 // Example entity we want to patch
 type User struct {
-	ID        int
-	Name      string
-	CreatedAt time.Time
-	Active    bool
+	CreatedAt time.Time // 24 bytes
+	Name      string    // 16 bytes
+	ID        int       // 8 bytes
+	Active    bool      // 1 byte + padding
 }
 
 // Example patch model
@@ -47,7 +47,11 @@ func main() {
 	// Apply the patch
 	result := service.SetValues(user, patch)
 
-	fmt.Printf("After patch:\n%+v\n\n", result.Entity.(*User))
+	if user, ok := result.Entity.(*User); ok {
+		fmt.Printf("After patch:\n%+v\n\n", user)
+	} else {
+		fmt.Println("Error: Invalid type assertion")
+	}
 
 	if len(result.Warnings) > 0 {
 		fmt.Println("Warnings:")
